@@ -20,9 +20,16 @@ public class CandidateController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Candidate>> getAllCandidates() {
-        List<Candidate> candidates = candidateService.getAllCandidates();
-        return ResponseEntity.ok(candidates);
+    public ResponseEntity<List<Candidate>> getAllCandidates(@RequestParam(required = false) String fieldofstudy) {
+        System.out.println(fieldofstudy);
+        List<Candidate> results;
+        if(fieldofstudy == null){
+            results = candidateService.getAllCandidates();
+        } else {
+            results = candidateService.getAllCandidatesByFieldOfStudy(fieldofstudy);
+        }
+
+        return ResponseEntity.ok(results);
     }
 
     @GetMapping("/{id}")

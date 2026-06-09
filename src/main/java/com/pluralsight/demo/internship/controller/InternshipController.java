@@ -19,9 +19,16 @@ public class InternshipController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Internship>> getAllInternships() {
-        List<Internship> internships = internshipService.getAllInternships();
-        return ResponseEntity.ok(internships);
+    public ResponseEntity<List<Internship>> getAllInternships(@RequestParam(required = false) String location) {
+        List<Internship> results;
+
+        if(location == null){
+            results = internshipService.getAllInternships();
+        } else {
+            results = internshipService.getInternshipByLocation(location);
+        }
+        
+        return ResponseEntity.ok(results);
     }
 
     @GetMapping("/{id}")

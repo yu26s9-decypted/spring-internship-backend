@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,6 +28,7 @@ public class InternshipService {
                 .collect(Collectors.toList());
     }
 
+
     public Internship getInternshipById(Long id) {
         // Intentional flaw: throws RuntimeException instead of proper exception
         return internshipRepository.findById(id)
@@ -39,6 +41,13 @@ public class InternshipService {
             internship.setPublished(true);
         }
         return internshipRepository.save(internship);
+    }
+
+    public List<Internship> getInternshipByLocation(String location) {
+        // Intentional flaw: throws RuntimeException instead of proper exception
+        return internshipRepository.findAll().stream()
+        .filter(i -> i.getLocation().equals(location))
+        .collect(Collectors.toList());
     }
 
     public Internship updateInternship(Long id, Internship updatedInternship) {
