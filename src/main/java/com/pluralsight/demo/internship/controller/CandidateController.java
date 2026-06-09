@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import javax.swing.text.html.parser.Entity;
+
 @RestController
 @RequestMapping("/api/candidates")
 @CrossOrigin(origins = "*")
@@ -32,9 +34,23 @@ public class CandidateController {
     }
 
     @GetMapping("/search/name/{name}")
-    public ResponseEntity<List<Candidate>> searchByName(@PathVariable String name) {
+    // ? is wildcard.
+    public ResponseEntity<?> searchByName(@PathVariable String name) {
         List<Candidate> results = candidateService.getByCandidateName(name);
         
+        if(results.isEmpty()){
+            return ResponseEntity.ok("There is no candidate with the name" + name);
+        }
+        return ResponseEntity.ok(results);
+    }
+
+     @GetMapping("/search/email/{email}")
+    public ResponseEntity<Candidate> searchByEmail(@PathVariable String email) {
+        System.out.println("Email " + email);
+        Candidate results = candidateService.getByCandidateEmail(email).orElse(null);
+        System.out.println("Result:"  + results);
+
+    
         return ResponseEntity.ok(results);
     }
 

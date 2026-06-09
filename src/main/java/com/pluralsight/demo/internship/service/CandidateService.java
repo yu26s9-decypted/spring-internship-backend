@@ -4,7 +4,9 @@ import com.pluralsight.demo.internship.model.Candidate;
 import com.pluralsight.demo.internship.repository.CandidateRepository;
 import org.springframework.stereotype.Service;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -41,6 +43,11 @@ public class CandidateService {
         return candidateRepository.findAll().stream()
         .filter(c -> c.getName() != null && c.getName().equalsIgnoreCase(name))
         .collect(Collectors.toList());
+    }
+    public Optional<Candidate> getByCandidateEmail(String email){
+        return candidateRepository.findAll().stream()
+        .filter(c -> c.getEmail() != null && c.getEmail().equalsIgnoreCase(email))
+        .findFirst();
     }
 
 
