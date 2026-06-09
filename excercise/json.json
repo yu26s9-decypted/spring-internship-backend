@@ -1,0 +1,194 @@
+{  
+"company": "SpringBootAppBuilders",  
+"founded": 2019,  
+"active": true,  
+"headquarters": {  
+"street": "124 Pineapple Lane",  
+"city": "Bikini Bottom",  
+"country": "Pacific Ocean"  
+},  
+"departments": [  
+{  
+"name": "HR",  
+"floor": 1,  
+"employees": [  
+{  
+"name": "SpongeBob SquarePants",  
+"age": 34,  
+"jobTitle": "HR Manager",  
+"fullTime": true,  
+"phone": "+1-555-0101",  
+"address": {  
+"street": "124 Conch Street",  
+"city": "Bikini Bottom",  
+"zipCode": "BB-1001"  
+},  
+"hobbies": ["jellyfishing", "karate", "bubble blowing", "cooking"],  
+"interests": ["marine biology", "employee happiness"]  
+},  
+{  
+"name": "Gary the Snail",  
+"age": 28,  
+"jobTitle": "HR Assistant",  
+"fullTime": false,  
+"phone": "+1-555-0102",  
+"address": {  
+"street": "124 Conch Street",  
+"city": "Bikini Bottom",  
+"zipCode": "BB-1001"  
+},  
+"hobbies": ["napping", "poetry"],  
+"interests": ["snail care", "classical music"]  
+}  
+]  
+},
+
+18  
+{  
+"name": "IT",  
+"floor": 3,  
+"employees": [  
+{  
+"name": "Sandy Cheeks",  
+"age": 36,  
+"jobTitle": "Lead Developer",  
+"fullTime": true,  
+"phone": "+1-555-0201",  
+"address": {  
+"street": "Treedome Drive 1",  
+"city": "Bikini Bottom",  
+"zipCode": "BB-2001"  
+},  
+"hobbies": ["karate", "science experiments", "surfing", "rodeo"],  
+"interests": ["artificial intelligence", "robotics", "Texas BBQ"]  
+},  
+{  
+"name": "Squidward Tentacles",  
+"age": 45,  
+"jobTitle": "Senior Developer",  
+"fullTime": true,  
+"phone": "+1-555-0202",  
+"address": {  
+"street": "122 Conch Street",  
+"city": "Bikini Bottom",  
+"zipCode": "BB-1003"  
+},  
+"hobbies": ["clarinet", "painting", "sculpture"],  
+"interests": ["fine arts", "architecture", "peace and quiet"]  
+},  
+{  
+"name": "Karen Plankton",  
+"age": 38,  
+"jobTitle": "Database Administrator",  
+"fullTime": true,  
+"phone": "+1-555-0203",  
+"address": {  
+"street": "1 Chum Bucket Way",  
+"city": "Bikini Bottom",  
+"zipCode": "BB-3001"  
+},  
+"hobbies": ["data analysis", "chess"],  
+"interests": ["machine learning", "world domination strategies"]  
+},  
+{  
+"name": "Larry the Lobster",  
+"age": 32,  
+"jobTitle": "Junior Developer",  
+"fullTime": true,  
+"phone": "+1-555-0204",  
+"address": {  
+"street": "15 Mussel Beach Road",  
+"city": "Bikini Bottom",
+
+19  
+"zipCode": "BB-4001"  
+},  
+"hobbies": ["weightlifting", "swimming", "volleyball"],  
+"interests": ["fitness apps", "sports technology"]  
+}  
+]  
+},  
+{  
+"name": "Sales",  
+"floor": 2,  
+"employees": [  
+{  
+"name": "Patrick Star",  
+"age": 35,  
+"jobTitle": "Sales Representative",  
+"fullTime": true,  
+"phone": "+1-555-0301",  
+"address": {  
+"street": "120 Conch Street",  
+"city": "Bikini Bottom",  
+"zipCode": "BB-1002"  
+},  
+"hobbies": ["sleeping", "eating ice cream", "watching TV"],  
+"interests": ["rocks", "doing nothing professionally"]  
+},  
+{  
+"name": "Mr. Krabs",  
+"age": 57,  
+"jobTitle": "Sales Director",  
+"fullTime": true,  
+"phone": "+1-555-0302",  
+"address": {  
+"street": "3541 Anchor Way",  
+"city": "Bikini Bottom",  
+"zipCode": "BB-5001"  
+},  
+"hobbies": ["counting money", "treasure hunting", "sailing"],  
+"interests": ["profit margins", "cost reduction", "gold"]  
+},  
+{  
+"name": "Pearl Krabs",  
+"age": 23,  
+"jobTitle": "Sales Intern",  
+"fullTime": false,  
+"phone": "+1-555-0303",  
+"address": {  
+"street": "3541 Anchor Way",  
+"city": "Bikini Bottom",  
+"zipCode": "BB-5001"  
+},  
+"hobbies": ["cheerleading", "shopping", "social media"],  
+"interests": ["marketing trends", "fashion"]  
+}  
+]  
+}
+
+20  
+]}  
+Write down the answer and the path you followed to find it (e.g. company →  
+departments → first department → name)  
+• What year was the company founded?  
+2019
+• How many departments does the company have?  
+3, IT and HR and Sales
+• On which floor does the IT department sit?  
+3
+• How many employees work in Sales?  
+3
+• What is SpongeBob's third hobby?  
+Cookin if index 1, bubble blowing if index starts at 0.
+• Who lives at 122 Conch Street?  
+Squidward
+• What is Karen Plankton's job title?  
+Database Administrator
+• Which employees are not full-time?  
+Gary and Pearl
+• Who shares the same address? Why might that be?  
+Spongebob and Gary. They live together because gary is spongebobs pet.
+• What is Patrick Star's second interest?  
+Eating ice cream
+• How many hobbies does Sandy Cheeks have? 
+4 
+• What is the zip code of the employee who plays clarinet?  
+BB-1003
+• Who is the youngest employee across all departments?  
+Pearl Krabs
+• Which department has the most employees?  
+IT. IT has 4 employees
+• What type is the value of active at the top level? E.g. is it a string, a number, or  
+something else?
+boolean
