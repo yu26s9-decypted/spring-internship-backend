@@ -5,6 +5,7 @@ import com.pluralsight.demo.internship.repository.InternshipRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -40,6 +41,7 @@ public class InternshipService {
         if (autoPublish) {
             internship.setPublished(true);
         }
+        internship.setCreatedAt(LocalDateTime.now());
         return internshipRepository.save(internship);
     }
 

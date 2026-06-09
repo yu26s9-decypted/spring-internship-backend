@@ -1,5 +1,7 @@
 package com.pluralsight.demo.internship.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,13 +21,16 @@ public class Internship {
     private String description;
     
     private String location;
-    
+
+     private LocalDateTime createdAt;
     // Intentional flaw: defaults to false, might be unexpected
     private boolean published = false;
 
     // Constructors
     public Internship() {
     }
+
+   
 
     public Internship(String title, String company, String description, String location) {
         this.title = title;
@@ -82,4 +87,16 @@ public class Internship {
     public void setPublished(boolean published) {
         this.published = published;
     }
+
+    public LocalDateTime getCreatedAt(LocalDateTime createdAt){
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt){
+        this.createdAt = createdAt;
+    }
+    
+
+
+
 }

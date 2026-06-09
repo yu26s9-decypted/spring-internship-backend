@@ -21,7 +21,6 @@ public class CandidateController {
 
     @GetMapping
     public ResponseEntity<List<Candidate>> getAllCandidates(@RequestParam(required = false) String fieldofstudy) {
-        System.out.println(fieldofstudy);
         List<Candidate> results;
         if(fieldofstudy == null){
             results = candidateService.getAllCandidates();
@@ -29,6 +28,13 @@ public class CandidateController {
             results = candidateService.getAllCandidatesByFieldOfStudy(fieldofstudy);
         }
 
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping("/search/name/{name}")
+    public ResponseEntity<List<Candidate>> searchByName(@PathVariable String name) {
+        List<Candidate> results = candidateService.getByCandidateName(name);
+        
         return ResponseEntity.ok(results);
     }
 

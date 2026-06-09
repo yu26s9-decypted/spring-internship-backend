@@ -37,6 +37,14 @@ public class CandidateService {
         .collect(Collectors.toList());
     }
 
+    public List<Candidate> getByCandidateName(String name){
+        return candidateRepository.findAll().stream()
+        .filter(c -> c.getName() != null && c.getName().equalsIgnoreCase(name))
+        .collect(Collectors.toList());
+    }
+
+
+
     public Candidate updateCandidate(Long id, Candidate updatedCandidate) {
         Candidate existing = getCandidateById(id);
         existing.setName(updatedCandidate.getName());
