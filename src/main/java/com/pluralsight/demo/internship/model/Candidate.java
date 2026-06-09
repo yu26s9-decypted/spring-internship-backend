@@ -20,6 +20,8 @@ public class Candidate {
 
     private LocalDateTime registeredAt;
 
+    private boolean isVisible;
+
     // Constructors
     public Candidate() {
     }
@@ -69,5 +71,13 @@ public class Candidate {
 
     public void setRegisteredAt(LocalDateTime registeredAt){
         this.registeredAt = registeredAt;
+    }
+
+    public boolean getVisible(){
+        return isVisible;
+    }
+
+    public void setVisible(boolean isVisible){
+        this.isVisible = isVisible;
     }
 }

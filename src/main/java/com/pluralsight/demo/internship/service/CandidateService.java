@@ -10,10 +10,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Value;
+
+
 
 @Service
 public class CandidateService {
 
+    @Value("${candidates.visible-by-default}")
+    private boolean visibleByDefault;
     private final CandidateRepository candidateRepository;
 
     public CandidateService(CandidateRepository candidateRepository) {
@@ -32,6 +37,7 @@ public class CandidateService {
 
     public Candidate createCandidate(Candidate candidate) {
         candidate.setRegisteredAt(LocalDateTime.now());
+        candidate.setVisible(visibleByDefault);
         return candidateRepository.save(candidate);
     }
 
