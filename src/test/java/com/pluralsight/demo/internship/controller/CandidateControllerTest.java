@@ -15,8 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,6 +46,28 @@ class CandidateControllerTest {
                 .andExpect(jsonPath("$.length()").value(2));
     }
 
+    @Test
+    void createCandidate_shouldPost() throws Exception {
+        Candidate candidate1 = new Candidate("Test Subject", "ts@demo.com", "Education");
+        when(candidateService.createCandidate(any(Candidate.class))).thenReturn(candidate1);
+
+        mockMvc.perform(post("/api/candidates")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                 {
+                                  "name": "Test Subject",
+                                  "email": "ts@demo.com",
+                                  "fieldOfStudy": "Education"
+                                  }
+                                
+                                """)
+                )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Test Subject"))
+                .andExpect(jsonPath("$.email").value("ts@demo.com"))
+                .andExpect(jsonPath("$.fieldOfStudy").value("Education"));
+
+    }
     @Test
     void deleteCandidate_shouldReturnNull() throws Exception {
         Long id = 20L;
