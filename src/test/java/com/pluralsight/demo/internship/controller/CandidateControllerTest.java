@@ -9,8 +9,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.pluralsight.demo.internship.model.Candidate;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -55,7 +53,30 @@ class CandidateControllerTest {
                .andExpect(status().isOk())
                .andExpect(jsonPath("$.length()").value(0));
 
+    }
 
+    @Test
+    void updateCandidate_shouldReturnChanged() throws Exception {
+        Candidate candidate1 = new Candidate("Candidate 1", "c1@test.com", "Nursing");
+        Candidate candidate2 = new Candidate("Candidate 2", "c2@test.com", "Biology");
+        when(candidateService.updateCandidate(anyLong(), any(Candidate.class))).thenReturn(candidate2);
+
+        mockMvc.perform(put("/api/candidates/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                 {
+                  "name": "Candidate 2",
+                  "email": "c2@test.com",
+                  "fieldOfStudy": "Biology"
+                 }
+                """))
+
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Candidate 2"))
+                .andExpect(jsonPath("$.email").value("c2@test.com"))
+                .andExpect(jsonPath("$.fieldOfStudy").value("Biology"));
+
+        verify(candidateService, times(1)).updateCandidate(anyLong(), any(Candidate.class));
     }
 
 
