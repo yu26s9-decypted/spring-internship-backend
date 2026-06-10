@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -44,5 +45,16 @@ class CandidateControllerTest {
                 .andExpect(jsonPath("$[0].email").value("c1@test.com"))
                 .andExpect(jsonPath("$[0].fieldOfStudy").value("Nursing"))
                 .andExpect(jsonPath("$.length()").value(2));
+    }
+
+    @Test
+    void deleteCandidate_shouldReturnNull() throws Exception {
+        Long id = 20L;
+        doNothing().when(candidateService).deleteCandidate(id);
+
+        mockMvc.perform(delete("/api/candidates/{id}", id))
+                .andExpect(status().isNoContent());
+
+        verify(candidateService, times(1)).deleteCandidate(id);
     }
 }
