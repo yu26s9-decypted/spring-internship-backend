@@ -47,6 +47,19 @@ class CandidateControllerTest {
     }
 
     @Test
+    void getAllCandidate_shouldReturnNothing() throws Exception {
+       when(candidateService.getAllCandidates()).thenReturn(List.of());
+
+       mockMvc.perform(get("/api/candidates")
+               .contentType(MediaType.APPLICATION_JSON))
+               .andExpect(status().isOk())
+               .andExpect(jsonPath("$.length()").value(0));
+
+
+    }
+
+
+    @Test
     void createCandidate_shouldPost() throws Exception {
         Candidate candidate1 = new Candidate("Test Subject", "ts@demo.com", "Education");
         when(candidateService.createCandidate(any(Candidate.class))).thenReturn(candidate1);
@@ -68,6 +81,7 @@ class CandidateControllerTest {
                 .andExpect(jsonPath("$.fieldOfStudy").value("Education"));
 
     }
+
     @Test
     void deleteCandidate_shouldReturnNull() throws Exception {
         Long id = 20L;
