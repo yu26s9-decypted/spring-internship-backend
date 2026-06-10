@@ -22,6 +22,8 @@ public class Candidate {
 
     private boolean isVisible;
 
+    private boolean test;
+
     // Constructors
     public Candidate() {
     }
